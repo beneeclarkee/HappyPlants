@@ -42,6 +42,24 @@
       border-left: 6px solid #4CAF50;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+    .card img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .tags {
+      font-size: 0.85em;
+      margin-top: 10px;
+    }
+    .tag {
+      display: inline-block;
+      background: #c8e6c9;
+      color: #256029;
+      padding: 2px 8px;
+      border-radius: 5px;
+      margin-right: 5px;
+    }
     footer {
       text-align: center;
       padding: 20px;
@@ -49,7 +67,33 @@
       margin-top: 40px;
       font-size: 0.9em;
     }
+    #searchBox {
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+    }
+    #searchBox input {
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
   </style>
+  <script>
+    function searchPlants() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const name = card.querySelector('h4').textContent.toLowerCase();
+        if (name.includes(input)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -64,9 +108,65 @@
     <a href="about.html">About</a>
   </nav>
 
+  <div id="searchBox">
+    <input type="text" id="searchInput" onkeyup="searchPlants()" placeholder="Search for a plant by name...">
+  </div>
+
   <div class="container">
     <h2>Welcome to HappyPlants.com</h2>
     <p>Your one-stop resource for simple, effective houseplant care tips. Browse our guides, explore the plant directory, and get confident with your greenery!</p>
+
+    <h3>Popular Plants</h3>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Sansevieria_trifasciata.jpg" alt="Snake Plant">
+      <h4>Snake Plant (Sansevieria)</h4>
+      <p>Low-maintenance and nearly indestructible. Perfect for beginners and forgetful waterers.</p>
+      <div class="tags">
+        <span class="tag">Low Light</span>
+        <span class="tag">Pet Toxic</span>
+        <span class="tag">Air Purifier</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Monstera_deliciosa3.jpg" alt="Monstera Deliciosa">
+      <h4>Monstera Deliciosa</h4>
+      <p>Known for its iconic split leaves. Loves bright, indirect light and weekly watering.</p>
+      <div class="tags">
+        <span class="tag">Bright Light</span>
+        <span class="tag">Large</span>
+        <span class="tag">Pet Toxic</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Aloe_vera_flower.JPG" alt="Aloe Vera">
+      <h4>Aloe Vera</h4>
+      <p>Succulent with healing gel. Thrives in sun and needs very little water.</p>
+      <div class="tags">
+        <span class="tag">Full Sun</span>
+        <span class="tag">Succulent</span>
+        <span class="tag">Pet Toxic</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Peace_lily.jpg" alt="Peace Lily">
+      <h4>Peace Lily</h4>
+      <p>Blooms indoors with white flowers. Prefers shade and consistent moisture.</p>
+      <div class="tags">
+        <span class="tag">Shade</span>
+        <span class="tag">Flowering</span>
+        <span class="tag">Pet Toxic</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Zamioculcas_Zamiifolia_002.JPG" alt="ZZ Plant">
+      <h4>ZZ Plant</h4>
+      <p>Shiny, sculptural leaves. Tolerates low light and dry conditions like a champ.</p>
+      <div class="tags">
+        <span class="tag">Low Light</span>
+        <span class="tag">Drought Tolerant</span>
+        <span class="tag">Pet Toxic</span>
+      </div>
+    </div>
   </div>
 
   <footer>
